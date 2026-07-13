@@ -13,8 +13,14 @@ export class NotionConnector implements ConnectorInterface {
   private notion: Client;
 
   constructor() {
+    const notionToken = process.env.NOTION_TOKEN;
+
+    if (!notionToken) {
+      throw new Error('Missing Notion API token');
+    }
+
     this.notion = new Client({
-      auth: process.env.NOTION_TOKEN,
+      auth: notionToken,
     });
   }
 

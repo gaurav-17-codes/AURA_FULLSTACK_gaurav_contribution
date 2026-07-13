@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import '@/lib/queue/worker';
 import { GoogleConnector } from '@/lib/connectors/google';
 
 export async function POST(request: NextRequest) {
