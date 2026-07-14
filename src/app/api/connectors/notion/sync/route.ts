@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import '@/lib/queue/worker';
 import { NotionConnector } from '@/lib/connectors/notion';
 
 export async function POST(request: NextRequest) {

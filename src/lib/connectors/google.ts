@@ -14,15 +14,11 @@ export class GoogleConnector implements ConnectorInterface {
   private oauth2Client: OAuth2Client;
 
   constructor() {
-    const clientId = process.env.GOOGLE_CLIENT_ID;
-    const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
-    const redirectUri = process.env.GOOGLE_REDIRECT_URI;
-
-    if (!clientId || !clientSecret || !redirectUri) {
-      throw new Error('Missing Google OAuth environment variables');
-    }
-
-    this.oauth2Client = new google.auth.OAuth2(clientId, clientSecret, redirectUri);
+    this.oauth2Client = new google.auth.OAuth2(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET,
+      process.env.GOOGLE_REDIRECT_URI
+    );
   }
 
   async authorize(userId: string): Promise<{ authUrl: string }> {
